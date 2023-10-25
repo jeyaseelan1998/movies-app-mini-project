@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 import Header from "../Header";
 import Footer from "../Footer";
-import SimilarMovieCard from "../SimilarMovieCard";
+import MovieCard from "../MovieCard";
 
 import "./index.css";
 import Cookies from "js-cookie";
@@ -80,7 +80,7 @@ const MovieDetails = ({ match }) => {
   useEffect(() => {
     getMovieDetailsResponse();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieId]);
 
   const renderSuccessView = () => {
     const { data } = response;
@@ -170,7 +170,7 @@ const MovieDetails = ({ match }) => {
           <h1 className="more-heading">More like this</h1>
           <ul className="similar-movies-list">
             {similarMovies.map((movie) => (
-              <SimilarMovieCard key={movie.id} movieDetails={movie} />
+              <MovieCard key={movie.id} movieDetails={movie} />
             ))}
           </ul>
         </div>
